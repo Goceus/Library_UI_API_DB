@@ -47,7 +47,7 @@ public class LibraryAPI_Util {
      */
     public static RequestSpecification getBasicLibrarianReq(String userType, String acceptType) {
         return given()
-                .header(ConfigurationReader.getProperty("apiKeyName"), getToken("librarian"))
+                .header(ConfigurationReader.getProperty("apiKeyName"), getToken(userType))
                 .accept(acceptType);
     }
 
