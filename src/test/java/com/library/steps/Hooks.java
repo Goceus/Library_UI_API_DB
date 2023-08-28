@@ -9,6 +9,7 @@ import com.library.utility.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.restassured.RestAssured;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -46,6 +47,16 @@ public class Hooks {
     public void tearDownDB(){
         System.out.println("close database connection...");
         DB_Util.destroy();
+    }
+
+    @Before("@api")
+    public void setupAPI(){
+        RestAssured.baseURI=ConfigurationReader.getProperty("library.baseUri");
+    }
+
+    @After("@api")
+    public void tearDownAPI(){
+        RestAssured.reset();
     }
 
 }
