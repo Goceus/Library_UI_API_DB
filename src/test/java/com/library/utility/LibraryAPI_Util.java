@@ -1,7 +1,9 @@
 package com.library.utility;
 
 import com.github.javafaker.Faker;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -9,6 +11,15 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class LibraryAPI_Util {
+
+    public static RequestSpecification getBasicRequest(String userType){
+
+        userType = userType.substring(0, userType.lastIndexOf("_"));
+
+        return given()
+                .header(ConfigurationReader.getProperty("apiKeyName"), LibraryAPI_Util.getToken(ConfigurationReader.getProperty(userType)))
+                .accept(ConfigurationReader.getProperty("acceptType"));
+    }
 
 
     /**
