@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features" ,
         glue = "com/library/steps",
         dryRun = false,
-        tags = "@wip and @api"
+        tags = " @wip2 and @api and @ui"
 )
 public class CukesRunner {
 

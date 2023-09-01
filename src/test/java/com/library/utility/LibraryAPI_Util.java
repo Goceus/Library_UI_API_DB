@@ -15,6 +15,29 @@ import static io.restassured.RestAssured.given;
 
 public class LibraryAPI_Util {
 
+
+    public static Response postLibrarianReqToAddBook(Map<String, Object> createdBook){
+
+        return given()
+                .header(ConfigurationReader.getProperty("apiKeyName"), getToken("librarian"))
+                .accept("application/json")
+                .contentType("application/x-www-form-urlencoded")
+                .formParams(createdBook)
+                .when().get("/add_book");
+
+    }
+    public static Response postLibrarianReqToAddBook(Map<String, Object> createdBook, String endpoint){
+
+        return given()
+                .header(ConfigurationReader.getProperty("apiKeyName"), getToken("librarian"))
+                .accept("application/json")
+                .contentType("application/x-www-form-urlencoded")
+                .formParams(createdBook)
+                .when().get(endpoint);
+
+    }
+
+
     /**
      * Method returns RequestSpecification as application/json
      *
@@ -45,7 +68,7 @@ public class LibraryAPI_Util {
      * Method returns basic RequestSpecification and accepts application/json format.
      * @return
      */
-    public static RequestSpecification getBasicLibrarianReq(String userType, String acceptType) {
+    public static RequestSpecification getBasicUserReq(String userType, String acceptType) {
         return given()
                 .header(ConfigurationReader.getProperty("apiKeyName"), getToken(userType))
                 .accept(acceptType);

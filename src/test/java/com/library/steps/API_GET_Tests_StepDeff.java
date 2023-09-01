@@ -37,7 +37,7 @@ public class API_GET_Tests_StepDeff {
 
     @Given("Accept header is {string}")
     public void accept_header_is(String acceptType) {
-            basicRequest = LibraryAPI_Util.getBasicLibrarianReq(userType, acceptType);
+            basicRequest = LibraryAPI_Util.getBasicUserReq(userType, acceptType);
 
         this.acceptType = acceptType;
     }
