@@ -403,7 +403,25 @@ public class BrowserUtil {
     }
 
 
+    /**
+     * Method explicitly waits until a title is per specified parameter. Also takes int as time to wait.
+     * @param title
+     * @param timeToWaitInSec
+     */
+    public static void waitForTitle(String title, int timeToWaitInSec) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitInSec));
+        wait.until(ExpectedConditions.titleIs(title));
+    }
 
+    /**
+     * Method explicitly waits until a string is in title per specified parameter. Also takes int as time to wait.
+     * @param iNTitle
+     * @param timeToWaitInSec
+     */
+    public static void waitForInTitle(String iNTitle, int timeToWaitInSec) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitInSec));
+        wait.until(ExpectedConditions.titleContains(iNTitle));
+    }
 
 
 

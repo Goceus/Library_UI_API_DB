@@ -33,12 +33,12 @@ public class API_GET_Tests_StepDeff {
     public void i_logged_library_api_as_a(String userType) {
         librarianToken = LibraryAPI_Util.getToken(userType);
         this.userType = userType;
+        System.out.println(userType + " is logged in.");
     }
 
     @Given("Accept header is {string}")
     public void accept_header_is(String acceptType) {
             basicRequest = LibraryAPI_Util.getBasicUserReq(userType, acceptType);
-
         this.acceptType = acceptType;
     }
 
